@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* === Local fonts === */
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alike";
+  src: url("/fonts/Alike-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JuliusSansOne";
+  src: url("/fonts/JuliusSansOne-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === Tailwind v4 theme tokens === */
+@theme {
+  --font-hero: "JuliusSansOne", sans-serif;
+  --font-logo: "Alike", sans-serif;
+  --font-heading: "Alike", serif;
+  --font-button: "Alike", serif;
+  --font-p: "Lora", serif;
+
+  /* Colors */
+  --color-bg: var(--color-bg);
+  --color-content-bg: var(--color-content-bg);
+  --color-text: var(--color-text);
+  --color-tags: var(--color-tags);
+
+  --breakpoint-2xs: 375px;
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+@layer utilities {
+  .card {
+    @apply bg-white shadow p-6;
+  }
+  .bg-pattern {
+    background-image: url("/zeebra-theme.png");
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+  }
+  .hero-text {
+    @apply text-4xl font-hero lg:tracking-[0.25rem] md:tracking-[0.1rem] 2xs:tracking-[0] lg:text-center 2xs:text-start;
+  }
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-bg: #f2f2f2;
+  --color-content-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-tags: #383838;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-p);
+}
