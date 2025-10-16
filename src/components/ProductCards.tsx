@@ -6,6 +6,7 @@ import { addToCart } from "@/features/cart/utils";
 import { renderPrice } from "@/features/products/Utils";
 import { Link } from "react-router-dom";
 import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
+import  percentageCalc  from "@/components/PercentageCalc";
 
 const ProductCards = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -31,11 +32,14 @@ const ProductCards = () => {
         >
           <Link to={`/product/id=${product.id}`}>
             <div className="mb-2 flex flex-col gap-2">
-              <img
-                className="w-full h-76 bg-center object-cover"
-                src={product.image.url}
-                alt={product.image.alt}
-              />
+              <div className="relative">
+                <img
+                  className="w-full h-76 bg-center object-cover"
+                  src={product.image.url}
+                  alt={product.image.alt}
+                />
+                {percentageCalc(product.price, product.discountedPrice)}
+              </div>
               <div>
                 <p className="text-lg">
                   {product.rating} <span className="text-xl">★</span>
