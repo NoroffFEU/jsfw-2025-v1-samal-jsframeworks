@@ -5,9 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "@/components/Header";
 
 export default function App() {
-  return (
-    <div className="bg-gray-100 mx-auto h-screen container">
-      <Header />
-    </div>
-  );
+	return (
+		<div className="bg-gray-100 mx-auto h-screen container">
+			<Header />
+		</div>
+	);
 }
