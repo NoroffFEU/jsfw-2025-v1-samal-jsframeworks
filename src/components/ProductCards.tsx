@@ -24,13 +24,13 @@ const ProductCards = () => {
   }
 
   return (
-    <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {products.map((product) => (
         <div
           key={product.id}
           className="card bg-gray-100!  p-3! flex flex-col cursor-pointer items-start justify-between hover:bg-white! hover:shadow-xl hover:transform hover:scale-101 duration-300"
         >
-          <Link to={`/product/id=${product.id}`}>
+          <Link className="w-full" to={`/product/id=${product.id}`}>
             <div className="mb-2 flex flex-col gap-2">
               <div className="relative">
                 <img

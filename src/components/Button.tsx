@@ -1,17 +1,19 @@
 type ButtonProps = {
   label: string;
-  size?: "sm" | "md" | "lg";
+  size?: "custom" | "sm" | "md" | "lg";
+  customClassName?: string;  
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button = ({ label, size = "md", onClick }: ButtonProps) => {
-  const sizeClasses =
+const Button = ({ label, size = "md", onClick, customClassName }: ButtonProps) => {
+  const preset =
     size === "sm"
       ? "text-sm px-3 py-1"
       : size === "lg"
       ? "text-lg px-6 py-3"
       : "text-base px-4 py-2";
 
+  const sizeClasses = size === "custom" ? customClassName ?? "" : preset;
   return (
     <div
       data-button

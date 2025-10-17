@@ -2,12 +2,9 @@ import Hero from "../components/Hero";
 import ProductCards from "@/components/ProductCards";
 import Filter from "@/components/Filter";
 import { useProductFilter, createFilterOptions } from "@/utils/filterProducts";
+import SearchBar from "@/components/SearchBar";
 
 export const Home = () => {
-  // Option 1: Use default options
-  // const { currentSort, handleSortChange, filterOptions } = useProductFilter();
-
-  // Option 2: Use custom options defined here in Home.tsx
   const customFilterOptions = createFilterOptions([
     { value: "default", label: "Default" },
     { value: "price-low-high", label: "Price: Low to High" },
@@ -20,14 +17,17 @@ export const Home = () => {
     useProductFilter(customFilterOptions);
 
   return (
-    <div>
+    <div className="container space-y-6">
       <Hero />
-      <Filter
-        size="md"
-        currentSort={currentSort}
-        onChange={handleSortChange}
-        options={filterOptions}
-      />
+      <div className="flex justify-between items-center bg-white px-2">
+        <Filter
+          size="md"
+          currentSort={currentSort}
+          onChange={handleSortChange}
+          options={filterOptions}
+        />
+        <SearchBar />
+      </div>
       <ProductCards />
     </div>
   );

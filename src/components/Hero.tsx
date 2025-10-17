@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className="card h-96 bg-pattern">
+    <div className="card h-96 bg-pattern cursor-default">
       <div className="flex items-center justify-center h-full card ">
         <div className="flex flex-col lg:items-center 2xs:items-start">
 
