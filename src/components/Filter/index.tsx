@@ -1,11 +1,11 @@
-import { useId } from "react";
+import { useId } from "react"
 
 type FilterProps = {
-	size?: "sm" | "md" | "lg";
-	options?: { value: string; label: string }[];
-	currentSort?: string;
-	onChange?: React.ChangeEventHandler<HTMLSelectElement>;
-};
+	size?: "sm" | "md" | "lg"
+	options?: { value: string; label: string }[]
+	currentSort?: string
+	onChange?: React.ChangeEventHandler<HTMLSelectElement>
+}
 
 const Filter = ({
 	size = "md",
@@ -18,7 +18,7 @@ const Filter = ({
 			? "text-sm px-3 py-1"
 			: size === "lg"
 				? "text-lg px-6 py-3"
-				: "text-base px-4 py-2";
+				: "text-base px-4 py-2"
 
 	const optionElements =
 		options.length > 0
@@ -27,7 +27,7 @@ const Filter = ({
 						{option.label}
 					</option>
 				))
-			: null;
+			: null
 
 	return (
 		<div className={`flex justify-end p-4 items-center gap-2`}>
@@ -44,7 +44,7 @@ const Filter = ({
 				{optionElements}
 			</select>
 		</div>
-	);
-};
+	)
+}
 
-export default Filter;
+export default Filter

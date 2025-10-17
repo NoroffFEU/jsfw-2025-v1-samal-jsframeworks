@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import BasketIcon from "@/assets/basket.svg?react";
+import { NavLink } from "react-router-dom"
+import BasketIcon from "@/assets/basket.svg?react"
 
 const link = ({ isActive }: { isActive: boolean }) =>
-	`px-3 py-2 rounded ${isActive ? "bg-black text-white" : "hover:bg-gray-200"}`;
+	`px-3 py-2 rounded ${isActive ? "bg-black text-white" : "hover:bg-gray-200"}`
 
 export default function Header() {
 	return (
@@ -26,5 +26,5 @@ export default function Header() {
 				</button>
 			</nav>
 		</header>
-	);
+	)
 }

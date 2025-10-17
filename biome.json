@@ -16,8 +16,7 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true,
-			"correctness": "on"
+			"recommended": true
 		}
 	},
 	"javascript": {

@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import Header from "@/components/Header";
+import { Outlet } from "react-router-dom"
+import Header from "@/components/Header"
 
 export default function RootLayout() {
 	return (
@@ -12,5 +12,5 @@ export default function RootLayout() {
 				&copy; {new Date().getFullYear()} Zeebra. All rights reserved.
 			</footer>
 		</div>
-	);
+	)
 }

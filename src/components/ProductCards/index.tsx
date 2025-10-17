@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { fetchProducts } from "@/api/fetchProducts";
-import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
-import percentageCalc from "@/components/PercentCalculator";
-import { addToCart } from "@/features/cart/utils";
-import { renderPrice } from "@/features/products/Utils";
-import type { Product } from "../../types/products";
-import Button from "../Button";
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { fetchProducts } from "@/api/fetchProducts"
+import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton"
+import percentageCalc from "@/components/PercentCalculator"
+import { addToCart } from "@/features/cart/utils"
+import { renderPrice } from "@/features/products/Utils"
+import type { Product } from "../../types/products.ts"
+import Button from "../Button/"
 
 const ProductCards = () => {
-	const [products, setProducts] = useState<Product[]>([]);
-	const [loading, setLoading] = useState(true);
+	const [products, setProducts] = useState<Product[]>([])
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		setLoading(true);
+		setLoading(true)
 		fetchProducts()
 			.then(setProducts)
-			.finally(() => setLoading(false));
-	}, []);
+			.finally(() => setLoading(false))
+	}, [])
 
 	if (loading) {
-		return <CardsSkeleton />;
+		return <CardsSkeleton />
 	}
 
 	return (
@@ -59,22 +59,22 @@ const ProductCards = () => {
 						label="Add to Cart"
 						size="md"
 						onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-							e.stopPropagation();
-							addToCart(product);
+							e.stopPropagation()
+							addToCart(product)
 						}}
 					/>
 				</div>
 			))}
 		</div>
-	);
-};
+	)
+}
 
 const renderTags = (tags: string[]) => {
 	return tags.map((tag) => (
 		<span key={tag} className=" w-fit px-1 text-sm py-0.5 text-white bg-tags">
 			{tag}
 		</span>
-	));
-};
+	))
+}
 
-export default ProductCards;
+export default ProductCards

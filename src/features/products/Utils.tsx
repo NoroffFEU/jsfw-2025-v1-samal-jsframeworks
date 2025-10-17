@@ -1,8 +1,8 @@
-import type { Product } from "@/types/products";
+import type { Product } from "@/types/products"
 
 const isDiscounted = (product: Product) => {
-	return product.discountedPrice < product.price;
-};
+	return product.discountedPrice < product.price
+}
 
 export const renderPrice = (product: Product) => {
 	return (
@@ -18,5 +18,5 @@ export const renderPrice = (product: Product) => {
 				<p className="text-lg font-bold">${product.price}</p>
 			)}
 		</div>
-	);
-};
+	)
+}

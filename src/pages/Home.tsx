@@ -1,8 +1,8 @@
-import Filter from "@/components/Filter";
-import ProductCards from "@/components/ProductCards";
-import SearchBar from "@/components/SearchBar";
-import { createFilterOptions, useProductFilter } from "@/utils/filterProducts";
-import Hero from "../components/Hero";
+import Filter from "@/components/Filter"
+import ProductCards from "@/components/ProductCards"
+import SearchBar from "@/components/SearchBar"
+import { createFilterOptions, useProductFilter } from "@/utils/filterProducts"
+import Hero from "../components/Hero"
 
 export const Home = () => {
 	const customFilterOptions = createFilterOptions([
@@ -11,10 +11,10 @@ export const Home = () => {
 		{ value: "price-high-low", label: "Price: High to Low" },
 		{ value: "name-a-z", label: "Name: A to Z" },
 		{ value: "rating-high-low", label: "Rating: High to Low" },
-	]);
+	])
 
 	const { currentSort, handleSortChange, filterOptions } =
-		useProductFilter(customFilterOptions);
+		useProductFilter(customFilterOptions)
 
 	return (
 		<div className="container space-y-6">
@@ -30,5 +30,5 @@ export const Home = () => {
 			</div>
 			<ProductCards />
 		</div>
-	);
-};
+	)
+}

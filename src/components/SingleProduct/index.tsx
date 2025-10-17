@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import SingleProductSkeleton from "@/components/loadingSkeleton/SingleProductSkeleton";
-import type { Product } from "@/types/products";
-import { fetchSingleProduct } from "../../api/fetchSingleProduct";
+import { useEffect, useState } from "react"
+import SingleProductSkeleton from "@/components/loadingSkeleton/SingleProductSkeleton"
+import type { Product } from "@/types/products"
+import { fetchSingleProduct } from "../../api/fetchSingleProduct"
 
 const SingleProduct = () => {
-	const id = window.location.href.split("=")[1];
+	const id = window.location.href.split("=")[1]
 
-	const [product, setProduct] = useState<Product | null>(null);
-	const [loading, setLoading] = useState(true);
+	const [product, setProduct] = useState<Product | null>(null)
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		setLoading(true);
+		setLoading(true)
 		fetchSingleProduct(id)
 			.then(setProduct)
-			.finally(() => setLoading(false));
-	}, [id]);
+			.finally(() => setLoading(false))
+	}, [id])
 
 	if (loading) {
-		return <SingleProductSkeleton />;
+		return <SingleProductSkeleton />
 	}
 
 	return (
@@ -42,7 +42,7 @@ const SingleProduct = () => {
 				<p>Product not found</p>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default SingleProduct;
+export default SingleProduct

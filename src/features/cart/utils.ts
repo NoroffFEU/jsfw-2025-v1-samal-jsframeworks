@@ -1,4 +1,4 @@
-import type { Product } from "@/types/products";
+import type { Product } from "@/types/products"
 export const addToCart = (product: Product) => {
-	console.log(`Adding product ${product.id} to cart.`);
-};
+	console.log(`Adding product ${product.id} to cart.`)
+}
