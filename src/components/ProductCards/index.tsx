@@ -6,7 +6,7 @@ import percentageCalc from "@/components/PercentCalculator";
 import { addToCart } from "@/features/cart/utils";
 import { renderPrice } from "@/features/products/Utils";
 import type { Product } from "../../types/products";
-import Button from "../Buttons";
+import Button from "../Button";
 
 const ProductCards = () => {
 	const [products, setProducts] = useState<Product[]>([]);

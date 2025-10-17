@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 type FilterProps = {
 	size?: "sm" | "md" | "lg";
 	options?: { value: string; label: string }[];
@@ -34,7 +36,7 @@ const Filter = ({
 			</label>
 			<select
 				name="filter"
-				id="filter"
+				id={useId()}
 				className={`bg-white w-fit font-button cursor-pointer ${sizeClasses}`}
 				value={currentSort}
 				onChange={onChange}

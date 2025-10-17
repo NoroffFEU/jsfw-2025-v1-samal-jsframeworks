@@ -18,6 +18,7 @@ export default function Header() {
 					Contact
 				</NavLink>
 				<button
+					type="button"
 					aria-label="Open basket"
 					className="p-1 rounded hover:bg-gray-100"
 				>

@@ -84,7 +84,6 @@ export const sortProducts = (
 		case "rating-low-high":
 			return productsCopy.sort((a, b) => a.rating - b.rating);
 
-		case "default":
 		default:
 			return productsCopy; // Return original order
 	}

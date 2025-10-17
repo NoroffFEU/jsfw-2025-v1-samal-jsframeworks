@@ -25,6 +25,7 @@ const Button = ({
 			className="bg-pattern w-full flex justify-center p-1 hover:shadow-lg hover:transition-transform hover:scale-101 duration-300"
 		>
 			<button
+				type="button"
 				className={`bg-white w-full font-button cursor-pointer ${sizeClasses}`}
 				onClick={onClick}
 			>
