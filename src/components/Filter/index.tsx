@@ -30,7 +30,7 @@ const Filter = ({
 			: null
 
 	return (
-		<div className={`flex justify-end p-4 items-center gap-2`}>
+		<div className={`flex w-fit items-center gap-2`}>
 			<label htmlFor="filter" className="text-lg font-heading">
 				Sort by:
 			</label>

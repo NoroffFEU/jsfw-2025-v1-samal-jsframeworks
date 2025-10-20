@@ -1,7 +1,7 @@
 const SingleProductSkeleton = () => {
 	return (
 		<div className="card bg-blue-200 w-fit px-32">
-			<div className="bg-red-200 w-[55rem] flex flex-row gap-4 p-4 animate-pulse">
+			<div className=" w-[55rem] flex flex-row gap-4 p-4 animate-pulse">
 				{/* Image skeleton */}
 				<div className="flex-shrink-0">
 					<div className="w-96 h-96 bg-gray-300 rounded"></div>

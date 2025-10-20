@@ -1,6 +1,6 @@
 const SearchBar = () => {
 	return (
-		<div className="flex gap-2 w-full max-w-lg">
+		<div className="flex gap-2 w-full">
 			<input
 				type="text"
 				placeholder="Search..."
