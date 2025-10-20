@@ -15,5 +15,7 @@ export async function fetchSingleProduct(ID: string): Promise<Product> {
 
 	const data = await res.json()
 
+	console.log(data)
+
 	return data.data
 }

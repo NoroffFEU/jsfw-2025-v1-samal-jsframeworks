@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react";
-import { fetchSingleProduct } from "@/api/fetchSingleProduct";
-import SingleProductSkeleton from "@/components/loadingSkeleton/SingleProductSkeleton";
 import renderTags from "@/components/RenderTags";
 import { renderPrice } from "@/features/products/Utils";
 import type { Product } from "@/types/products";
 import Button from "../Button";
 
-const SingleProduct = () => {
-  const id = window.location.href.split("=")[1];
+interface SingleProductProps {
+  product: Product;
+}
 
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    fetchSingleProduct(id)
-      .then(setProduct)
-      .finally(() => setLoading(false));
-  }, [id]);
-
-  if (loading) {
-    return <SingleProductSkeleton />;
-  }
-
+const SingleProduct = ({ product }: SingleProductProps) => {
   return (
     <div className="card container h-full">
       {product ? (
@@ -35,17 +20,17 @@ const SingleProduct = () => {
             />
           </div>
 
-          <div className="flex flex-col container gap-4 p-2 ">
-            <div className="flex flex-col gap-2">
+          <div className="flex flex-col container gap-4 ">
+            <div className="flex flex-col gap-8">
               <h1 className="text-3xl">{product.title}</h1>
               <p>{product.description}</p>
             </div>
             <span className="font-heading">{renderPrice(product)}</span>
-            <div className="">
+            <div className="flex flex-col gap-2">
               <h2 className="font-heading">Tags:</h2>
               <div className="flex gap-2">{renderTags(product.tags)}</div>
             </div>
-            <div className="w-full m-auto">
+            <div className="w-full flex h-full items-end">
               <Button label="Add to Cart" size="md" onClick={() => {}} />
             </div>
           </div>

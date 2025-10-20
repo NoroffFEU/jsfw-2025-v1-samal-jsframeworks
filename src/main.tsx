@@ -6,7 +6,7 @@ import { Contact } from "./pages/Contact"
 import { Home } from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import "./index.css"
-import Product from "./pages/SingleProduct"
+import ViewSingleProduct from "./pages/ViewSingleProduct"
 
 const router = createBrowserRouter([
 	{
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "contact", element: <Contact /> },
-			{ path: "product/:id", element: <Product /> },
+			{ path: "product/:id", element: <ViewSingleProduct /> },
 			{ path: "*", element: <NotFound /> },
 		],
 	},
