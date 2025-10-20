@@ -4,9 +4,9 @@ import { fetchProducts } from "@/api/fetchProducts";
 import Button from "@/components/Button";
 import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
 import percentageCalc from "@/components/PercentCalculator";
+import { renderPrice } from "@/components/RenderPrice";
 import renderTags from "@/components/RenderTags";
 import { addToCart } from "@/features/cart/utils";
-import { renderPrice } from "@/features/products/Utils";
 import type { Product } from "@/types/products";
 
 const ProductCards = () => {
@@ -39,7 +39,13 @@ const ProductCards = () => {
                   src={product.image.url}
                   alt={product.image.alt}
                 />
-                {percentageCalc(product.price, product.discountedPrice)}
+                <div className="absolute top-2 right-2">
+                  {percentageCalc({
+                    size: "sm",
+                    originalPrice: product.price,
+                    discountedPrice: product.discountedPrice,
+                  })}
+                </div>
               </div>
               <div>
                 <p className="text-lg">
@@ -53,7 +59,7 @@ const ProductCards = () => {
                 <div className="flex gap-2">{renderTags(product.tags)}</div>
               </div>
 
-              {renderPrice(product)}
+              {renderPrice({ product })}
             </div>
           </Link>
           <Button
