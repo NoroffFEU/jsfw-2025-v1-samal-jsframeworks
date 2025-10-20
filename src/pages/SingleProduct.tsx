@@ -2,7 +2,7 @@ import SingleProduct from "@/components/SingleProduct"
 
 const Product = () => {
 	return (
-		<div className="flex justify-center items-center">
+		<div className="flex bg-amber-100 h-full justify-center items-center">
 			<SingleProduct />
 		</div>
 	)

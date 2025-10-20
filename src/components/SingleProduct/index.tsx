@@ -29,7 +29,7 @@ const SingleProduct = () => {
         <div className="m-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8">
           <div className="w-full bg-gray-100">
             <img
-              className="h-full m-auto object-cover"
+              className="max-h-[45rem] md:min-h-[45rem] m-auto object-cover"
               src={product.image.url}
               alt={product.image.alt}
             />

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "@/api/fetchProducts";
+import Button from "@/components/Button";
 import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
 import percentageCalc from "@/components/PercentCalculator";
 import renderTags from "@/components/RenderTags";
 import { addToCart } from "@/features/cart/utils";
 import { renderPrice } from "@/features/products/Utils";
 import type { Product } from "@/types/products";
-import Button from "@/components/Button";
 
 const ProductCards = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -29,7 +29,7 @@ const ProductCards = () => {
       {products.map((product) => (
         <div
           key={product.id}
-          className="card bg-gray-100!  p-3! flex flex-col cursor-pointer items-start justify-between hover:bg-white! hover:shadow-xl hover:transform hover:scale-101 duration-300"
+          className="card bg-gray-100! p-3! flex flex-col cursor-pointer items-start justify-between hover:bg-white! hover:shadow-xl hover:transform hover:scale-101 duration-300"
         >
           <Link className="w-full" to={`/product/id=${product.id}`}>
             <div className="mb-2 flex flex-col gap-2">
