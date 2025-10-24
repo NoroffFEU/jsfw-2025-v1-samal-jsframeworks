@@ -3,18 +3,21 @@ export type CartSidebarProps = {
 	onClose: () => void
 }
 
-export interface CartItem {
+export interface CartItemType {
 	id: string
-	name: string
+	title: string
 	price: number
-	amount: number
-	image: string
+	quantity: number
+	image: {
+		url: string
+		alt: string
+	}
 	discountedPrice: number
 }
 
 export interface CartContextType {
-	items: CartItem[]
-	addItem: (item: CartItem) => void
+	items: CartItemType[]
+	addItem: (item: CartItemType) => void
 	updateAmount: (id: string, amount: number) => void
 	removeItem: (id: string) => void
 	clearCart: () => void
@@ -25,7 +28,7 @@ export interface CartContextType {
 }
 
 export interface CartItemProps {
-	item: CartItem
+	item: CartItemType
 	onIncrease: () => void
 	onDecrease: () => void
 	onRemove: () => void

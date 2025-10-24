@@ -7,10 +7,10 @@ import percentageCalc from "@/components/PercentCalculator"
 import { renderPrice } from "@/components/RenderPrice"
 import renderTags from "@/components/RenderTags"
 import { addToCart } from "@/features/cart/utils"
-import type { Product } from "@/types/products"
+import type { ProductType } from "@/types/products"
 
 const ProductCards = () => {
-	const [products, setProducts] = useState<Product[]>([])
+	const [products, setProducts] = useState<ProductType[]>([])
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -63,7 +63,7 @@ const ProductCards = () => {
 						</div>
 					</Link>
 					<Button
-						label="Add to Cart"
+						label="ADD TO CART"
 						size="md"
 						onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
 							e.stopPropagation()

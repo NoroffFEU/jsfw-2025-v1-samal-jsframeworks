@@ -1,7 +1,7 @@
-import type { Product } from "@/types/products"
+import type { ProductType } from "@/types/products"
 
 interface ReviewsProps {
-	product: Product
+	product: ProductType
 }
 
 const Reviews = ({ product }: ReviewsProps) => {

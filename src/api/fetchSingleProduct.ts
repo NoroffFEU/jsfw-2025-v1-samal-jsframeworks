@@ -1,7 +1,7 @@
 import { API_BASE, PRODUCTS_ENDPOINT } from "../constants"
-import type { Product } from "../types/products"
+import type { ProductType } from "../types/products"
 
-export async function fetchSingleProduct(ID: string): Promise<Product> {
+export async function fetchSingleProduct(ID: string): Promise<ProductType> {
 	const res = await fetch(`${API_BASE}${PRODUCTS_ENDPOINT}/${ID}`, {
 		method: "GET",
 		headers: {

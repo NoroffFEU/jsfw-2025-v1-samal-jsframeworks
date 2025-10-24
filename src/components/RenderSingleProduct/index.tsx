@@ -1,12 +1,13 @@
 import { useId, useState } from "react"
 import { renderPrice } from "@/components/RenderPrice"
 import renderTags from "@/components/RenderTags"
-import type { Product } from "@/types/products"
+import { addToCart } from "@/features/cart/utils"
+import type { ProductType } from "@/types/products"
 import Button from "../Button"
 import percentageCalc from "../PercentCalculator"
 
 interface SingleProductProps {
-	product: Product
+	product: ProductType
 }
 
 const SingleProduct = ({ product }: SingleProductProps) => {
@@ -65,7 +66,13 @@ const SingleProduct = ({ product }: SingleProductProps) => {
 						</div>
 
 						<div className="w-full flex h-full justify-end flex-col gap-4">
-							<Button label="Add to Cart" size="md" onClick={() => {}} />
+							<Button
+								label="ADD TO CART"
+								size="md"
+								onClick={() => {
+									addToCart(product)
+								}}
+							/>
 							<div className="flex flex-row gap-2 items-center">
 								<i
 									className="fa-solid fa-truck"

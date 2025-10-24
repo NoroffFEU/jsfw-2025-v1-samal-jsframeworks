@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductType {
 	id: string
 	title: string
 	description: string
@@ -10,17 +10,17 @@ export interface Product {
 	}
 	rating: number
 	tags: string[]
-	reviews: Review[]
+	reviews: ReviewType[]
 }
 
-export interface Review {
+export interface ReviewType {
 	id: string
 	username: string
 	rating: number
 	description: string
 }
 
-export interface ProductResponse {
-	data: Product
+export interface ProductResponseType {
+	data: ProductType
 	meta: Record<string, unknown>
 }

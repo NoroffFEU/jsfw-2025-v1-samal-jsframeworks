@@ -1,11 +1,11 @@
-import type { Product } from "@/types/products"
+import type { ProductType } from "@/types/products"
 
 interface totalPriceProps {
-	product: Product
+	product: ProductType
 	quantity?: number
 }
 
-const isDiscounted = (product: Product) => {
+const isDiscounted = (product: ProductType) => {
 	return product.discountedPrice < product.price
 }
 
