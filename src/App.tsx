@@ -1,10 +1,10 @@
 // import { useState } from "react";
 // import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 // import { FiZap } from "react-icons/fi";
-import { Outlet } from "react-router-dom"
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
+import { Outlet } from "react-router-dom";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function App() {
 	return (
@@ -15,5 +15,5 @@ export default function App() {
 			</main>
 			<Footer />
 		</div>
-	)
+	);
 }

@@ -3,7 +3,7 @@ const renderTags = (tags: string[]) => {
 		<span key={tag} className="w-fit px-1 text-sm py-0.5 text-white bg-tags">
 			{tag}
 		</span>
-	))
-}
+	));
+};
 
-export default renderTags
+export default renderTags;

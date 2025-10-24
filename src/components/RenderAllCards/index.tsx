@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { fetchProducts } from "@/api/fetchProducts"
-import Button from "@/components/Button"
-import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton"
-import percentageCalc from "@/components/PercentCalculator"
-import { renderPrice } from "@/components/RenderPrice"
-import renderTags from "@/components/RenderTags"
-import { addToCart } from "@/features/cart/utils"
-import type { ProductType } from "@/types/products"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { fetchProducts } from "@/api/fetchProducts";
+import Button from "@/components/Button";
+import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
+import percentageCalc from "@/components/PercentCalculator";
+import { renderPrice } from "@/components/RenderPrice";
+import renderTags from "@/components/RenderTags";
+import { addToCart } from "@/features/cart/utils";
+import type { ProductType } from "@/types/products";
 
 const ProductCards = () => {
-	const [products, setProducts] = useState<ProductType[]>([])
-	const [loading, setLoading] = useState(true)
+	const [products, setProducts] = useState<ProductType[]>([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setLoading(true)
+		setLoading(true);
 		fetchProducts()
 			.then(setProducts)
-			.finally(() => setLoading(false))
-	}, [])
+			.finally(() => setLoading(false));
+	}, []);
 
 	if (loading) {
-		return <CardsSkeleton />
+		return <CardsSkeleton />;
 	}
 
 	return (
@@ -66,14 +66,14 @@ const ProductCards = () => {
 						label="ADD TO CART"
 						size="md"
 						onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-							e.stopPropagation()
-							addToCart(product)
+							e.stopPropagation();
+							addToCart(product);
 						}}
 					/>
 				</div>
 			))}
 		</div>
-	)
-}
+	);
+};
 
-export default ProductCards
+export default ProductCards;

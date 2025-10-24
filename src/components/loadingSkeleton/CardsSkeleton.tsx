@@ -1,6 +1,6 @@
 const CardsSkeleton = () => {
 	// Create array of 8 skeleton cards
-	const skeletonCards = Array.from({ length: 8 }, (_, index) => index)
+	const skeletonCards = Array.from({ length: 8 }, (_, index) => index);
 
 	return (
 		<div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -48,7 +48,7 @@ const CardsSkeleton = () => {
 				</div>
 			))}
 		</div>
-	)
-}
+	);
+};
 
-export default CardsSkeleton
+export default CardsSkeleton;

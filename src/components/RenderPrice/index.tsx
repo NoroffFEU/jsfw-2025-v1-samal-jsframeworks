@@ -1,19 +1,19 @@
-import type { ProductType } from "@/types/products"
+import type { ProductType } from "@/types/products";
 
 interface totalPriceProps {
-	product: ProductType
-	quantity?: number
+	product: ProductType;
+	quantity?: number;
 }
 
 const isDiscounted = (product: ProductType) => {
-	return product.discountedPrice < product.price
-}
+	return product.discountedPrice < product.price;
+};
 
 export const renderPrice = ({ product, quantity }: totalPriceProps) => {
-	const totalPrice = quantity ? product.price * quantity : product.price
+	const totalPrice = quantity ? product.price * quantity : product.price;
 	const totalDiscountedPrice = quantity
 		? product.discountedPrice * quantity
-		: product.discountedPrice
+		: product.discountedPrice;
 
 	return (
 		<div className="flex items-center gap-2">
@@ -30,5 +30,5 @@ export const renderPrice = ({ product, quantity }: totalPriceProps) => {
 				<p className="text-lg font-bold">${Math.round(totalPrice)}</p>
 			)}
 		</div>
-	)
-}
+	);
+};

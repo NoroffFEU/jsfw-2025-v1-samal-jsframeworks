@@ -27,7 +27,7 @@ const SingleProductSkeleton = () => {
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default SingleProductSkeleton
+export default SingleProductSkeleton;

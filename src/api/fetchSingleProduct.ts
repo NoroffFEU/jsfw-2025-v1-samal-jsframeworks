@@ -1,5 +1,5 @@
-import { API_BASE, PRODUCTS_ENDPOINT } from "../constants"
-import type { ProductType } from "../types/products"
+import { API_BASE, PRODUCTS_ENDPOINT } from "../constants";
+import type { ProductType } from "../types/products";
 
 export async function fetchSingleProduct(ID: string): Promise<ProductType> {
 	const res = await fetch(`${API_BASE}${PRODUCTS_ENDPOINT}/${ID}`, {
@@ -7,13 +7,13 @@ export async function fetchSingleProduct(ID: string): Promise<ProductType> {
 		headers: {
 			"Content-Type": "application/json",
 		},
-	})
+	});
 
 	if (!res.ok) {
-		throw new Error(`Failed to fetch products!: ${res.statusText}`)
+		throw new Error(`Failed to fetch products!: ${res.statusText}`);
 	}
 
-	const data = await res.json()
+	const data = await res.json();
 
-	return data.data
+	return data.data;
 }

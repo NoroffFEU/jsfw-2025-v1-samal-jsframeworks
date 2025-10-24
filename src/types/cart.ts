@@ -1,35 +1,40 @@
-export type CartSidebarProps = {
-	isOpen: boolean
-	onClose: () => void
-}
+export type CartPopupProps = {
+	isOpen: boolean;
+	onClose: () => void;
+};
 
-export interface CartItemType {
-	id: string
-	title: string
-	price: number
-	quantity: number
+export interface CartItemProps {
+	id: string;
+	title: string;
+	price: number;
+	quantity: number;
 	image: {
-		url: string
-		alt: string
-	}
-	discountedPrice: number
-}
-
-export interface CartContextType {
-	items: CartItemType[]
-	addItem: (item: CartItemType) => void
-	updateAmount: (id: string, amount: number) => void
-	removeItem: (id: string) => void
-	clearCart: () => void
-	hasItem: (id: string) => boolean
-	totalItems: number
-	totalSaved: number
-	totalPrice: number
+		url: string;
+		alt: string;
+	};
+	discountedPrice: number;
 }
 
 export interface CartItemProps {
-	item: CartItemType
-	onIncrease: () => void
-	onDecrease: () => void
-	onRemove: () => void
+	item: CartItemProps;
+	onIncrease: () => void;
+	onDecrease: () => void;
+	onRemove: () => void;
 }
+
+export type CartItem = {
+	id: string;
+	quantity: number;
+};
+
+export type CartProviderProps = {
+	children: React.ReactNode;
+};
+
+export type CartContextType = {
+	cartItems: CartItem[];
+	getQuantity: (id: string) => number;
+	increaseItem: (id: string) => void;
+	decreaseItem: (id: string) => void;
+	removeItem: (id: string) => void;
+};

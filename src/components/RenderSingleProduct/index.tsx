@@ -1,19 +1,19 @@
-import { useId, useState } from "react"
-import { renderPrice } from "@/components/RenderPrice"
-import renderTags from "@/components/RenderTags"
-import { addToCart } from "@/features/cart/utils"
-import type { ProductType } from "@/types/products"
-import Button from "../Button"
-import percentageCalc from "../PercentCalculator"
+import { useId, useState } from "react";
+import { renderPrice } from "@/components/RenderPrice";
+import renderTags from "@/components/RenderTags";
+import { addToCart } from "@/features/cart/utils";
+import type { ProductType } from "@/types/products";
+import Button from "../Button";
+import percentageCalc from "../PercentCalculator";
 
 interface SingleProductProps {
-	product: ProductType
+	product: ProductType;
 }
 
 const SingleProduct = ({ product }: SingleProductProps) => {
-	const quantityInput = useId()
+	const quantityInput = useId();
 
-	const [quantity, setQuantity] = useState(1)
+	const [quantity, setQuantity] = useState(1);
 
 	return (
 		<div className="card container h-full">
@@ -45,7 +45,7 @@ const SingleProduct = ({ product }: SingleProductProps) => {
 									className="border border-gray-300 w-[5rem]  rounded-md p-2"
 									value={quantity}
 									onChange={(e) => {
-										setQuantity(Number(e.target.value))
+										setQuantity(Number(e.target.value));
 									}}
 								/>
 							</div>
@@ -70,7 +70,7 @@ const SingleProduct = ({ product }: SingleProductProps) => {
 								label="ADD TO CART"
 								size="md"
 								onClick={() => {
-									addToCart(product)
+									addToCart(product);
 								}}
 							/>
 							<div className="flex flex-row gap-2 items-center">
@@ -87,7 +87,7 @@ const SingleProduct = ({ product }: SingleProductProps) => {
 				<p>Product not found</p>
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default SingleProduct
+export default SingleProduct;
