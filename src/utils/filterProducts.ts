@@ -1,7 +1,6 @@
 import type { ProductType } from "@/types/products.types";
 
 export const filterProducts = (criteria: ProductType[], options: string) => {
-	console.log("Filtering with option:", options);
 	switch (options) {
 		case "a-z":
 			return criteria.sort((a, b) => a.title.localeCompare(b.title));
