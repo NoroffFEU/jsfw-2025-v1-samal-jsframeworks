@@ -1,5 +1,5 @@
 import { API_BASE, PRODUCTS_ENDPOINT } from "../constants";
-import type { Product } from "../types/products";
+import type { Product } from "../types/products.types";
 
 export async function fetchProducts(): Promise<Product[]> {
 	const res = await fetch(`${API_BASE}${PRODUCTS_ENDPOINT}`, {

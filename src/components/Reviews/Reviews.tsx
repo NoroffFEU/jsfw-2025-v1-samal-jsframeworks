@@ -1,4 +1,4 @@
-import type { ProductType } from "@/types/products";
+import type { ProductType } from "@/types/products.types";
 
 interface ReviewsProps {
 	product: ProductType;

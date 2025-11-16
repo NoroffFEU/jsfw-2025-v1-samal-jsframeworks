@@ -3,7 +3,7 @@ import { fetchSingleProduct } from "@/api/fetchSingleProduct";
 import SingleProductSkeleton from "@/components/loadingSkeleton/SingleProductSkeleton";
 import SingleProduct from "@/components/RenderSingleProduct";
 import Reviews from "@/components/Reviews/Reviews";
-import type { ProductType } from "@/types/products";
+import type { ProductType } from "@/types/products.types";
 
 const ViewSingleProduct = () => {
 	const id = window.location.href.split("=")[1];

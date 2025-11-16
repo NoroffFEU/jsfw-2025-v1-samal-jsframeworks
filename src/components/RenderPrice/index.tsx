@@ -1,4 +1,4 @@
-import type { ProductType } from "@/types/products";
+import type { ProductType } from "@/types/products.types";
 
 interface totalPriceProps {
 	product: ProductType;
@@ -20,14 +20,14 @@ export const renderPrice = ({ product, quantity }: totalPriceProps) => {
 			{isDiscounted(product) ? (
 				<>
 					<p className="text-lg font-bold text-green-600">
-						${Math.round(totalDiscountedPrice)}
+						${(totalDiscountedPrice).toFixed(2)}
 					</p>
 					<p className="text-sm text-gray-500 line-through">
-						${Math.round(totalPrice)}
+						${(totalPrice).toFixed(2)}
 					</p>
 				</>
 			) : (
-				<p className="text-lg font-bold">${Math.round(totalPrice)}</p>
+				<p className="text-lg font-bold">${(totalPrice).toFixed(2)}</p>
 			)}
 		</div>
 	);
