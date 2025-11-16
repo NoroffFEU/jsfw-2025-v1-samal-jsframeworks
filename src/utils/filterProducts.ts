@@ -1,5 +1,5 @@
 import React from "react";
-import type { Product } from "@/types/products.types";
+import type { ProductType } from "@/types/products.types";
 
 export type SortOption =
 	| "default"
@@ -46,9 +46,9 @@ export const RATING_FILTER_OPTIONS: FilterOption[] = [
 ];
 
 export const sortProducts = (
-	products: Product[],
+	products: ProductType[],
 	sortOption: SortOption,
-): Product[] => {
+): ProductType[] => {
 	if (!products || products.length === 0) return [];
 
 	const productsCopy = [...products];
@@ -104,7 +104,7 @@ export const useProductFilter = (customOptions?: FilterOption[]) => {
 
 	const handleSortChange = createSortChangeHandler(setCurrentSort);
 
-	const filterProducts = (products: Product[]) => {
+	const filterProducts = (products: ProductType[]) => {
 		return sortProducts(products, currentSort);
 	};
 

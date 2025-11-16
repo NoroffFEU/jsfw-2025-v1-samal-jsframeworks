@@ -20,14 +20,14 @@ export const renderPrice = ({ product, quantity }: totalPriceProps) => {
 			{isDiscounted(product) ? (
 				<>
 					<p className="text-lg font-bold text-green-600">
-						${(totalDiscountedPrice).toFixed(2)}
+						${totalDiscountedPrice.toFixed(2)}
 					</p>
 					<p className="text-sm text-gray-500 line-through">
-						${(totalPrice).toFixed(2)}
+						${totalPrice.toFixed(2)}
 					</p>
 				</>
 			) : (
-				<p className="text-lg font-bold">${(totalPrice).toFixed(2)}</p>
+				<p className="text-lg font-bold">${totalPrice.toFixed(2)}</p>
 			)}
 		</div>
 	);

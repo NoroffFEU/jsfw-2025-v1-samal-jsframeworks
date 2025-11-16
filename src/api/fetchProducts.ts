@@ -1,7 +1,7 @@
 import { API_BASE, PRODUCTS_ENDPOINT } from "../constants";
-import type { Product } from "../types/products.types";
+import type { ProductType } from "../types/products.types";
 
-export async function fetchProducts(): Promise<Product[]> {
+export async function fetchProducts(): Promise<ProductType[]> {
 	const res = await fetch(`${API_BASE}${PRODUCTS_ENDPOINT}`, {
 		method: "GET",
 		headers: {
