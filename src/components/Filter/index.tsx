@@ -4,7 +4,7 @@ type FilterProps = {
 	size?: "sm" | "md" | "lg";
 	options?: { value: string; label: string }[];
 	currentSort?: string;
-	onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+	onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 const Filter = ({
