@@ -1,17 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { fetchProducts } from "@/api/fetchProducts";
-import Button from "@/components/Button";
-import Filter from "@/components/Filter";
+import Filter from "@/components/ui/Filter";
 import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
-import percentageCalc from "@/components/PercentCalculator";
-import { renderPrice } from "@/components/RenderPrice";
-import renderTags from "@/components/RenderTags";
-import SearchBar from "@/components/SearchBar";
-import { useShoppingCart } from "@/contex/CartContext";
+import SearchBar from "@/components/ui/SearchBar";
+import Button from "@/components/ui/Button";
+import { useShoppingCart } from "@/features/cart/context/CartContext";
+import { fetchProducts } from "@/features/products/api/fetchProducts";
+import percentageCalc from "@/features/products/components/DiscountBadge";
+import { renderPrice } from "@/features/products/components/ProductPrice";
+import renderTags from "@/features/products/components/ProductTags";
+import { filterProducts } from "@/features/products/utils/filterProducts";
 import type { ProductType } from "@/types/products.types";
-import { filterProducts } from "@/utils/filterProducts";
 
 const ProductCards = () => {
   const filterOptions = [
@@ -46,7 +46,6 @@ const ProductCards = () => {
           p.tags.some((tag) => tag.toLowerCase().includes(q))
       );
     }
-    console.log("Current Sort:", list);
 
     if (currentSort) {
       list = filterProducts(list, currentSort);

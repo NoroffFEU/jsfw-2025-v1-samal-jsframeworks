@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import ProductCards from "@/components/RenderAllCards";
+import ProductCards from "@/features/products/pages/ProductsPage";
 
 export const Home = () => {
 	return (
