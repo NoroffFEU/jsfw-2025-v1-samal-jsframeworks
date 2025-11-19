@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchSingleProduct } from "@/api/fetchSingleProduct";
 import SingleProductSkeleton from "@/components/loadingSkeleton/SingleProductSkeleton";
+import { fetchSingleProduct } from "@/features/products/api/fetchSingleProduct";
 import Reviews from "@/features/products/components/Reviews/Reviews";
 import SingleProduct from "@/features/products/pages/ProductDetailPage";
 import type { ProductType } from "@/types/products.types";
