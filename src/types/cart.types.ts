@@ -14,6 +14,7 @@ export interface CartItem {
 export interface CartContextType {
 	cartItems: CartItem[];
 	removeFromCart: (id: string) => void;
+	removeAllFromCart: () => void;
 	increaseQuantity: (
 		id: string,
 		title: string,
@@ -28,6 +29,7 @@ export interface CartContextType {
 	closeCart: () => void;
 	isOpen: boolean;
 	toggleCart: () => void;
+	getTotalPrice: () => string;
 }
 
 export interface CartItemProps {

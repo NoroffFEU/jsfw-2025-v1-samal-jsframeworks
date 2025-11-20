@@ -4,9 +4,8 @@ import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
 import ProductCard from "@/components/ProductCards";
 import Filter from "@/components/ui/Filter";
 import SearchBar from "@/components/ui/SearchBar";
-import { useShoppingCart } from "@/features/cart/context/CartContext";
 import { fetchProducts } from "@/features/products/api/fetchProducts";
-import { filterProducts } from "@/features/products/utils/filterProducts";
+import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 import type { ProductType } from "@/types/products.types";
 import { getVisibleProducts } from "@/utils/getVisibleProducts";
 
@@ -30,6 +29,9 @@ const ProductCards = () => {
     setLoading(true);
     fetchProducts()
       .then(setProducts)
+      .catch(() => {
+        toast.error("Failed to load products. Please try again.");
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -50,7 +52,7 @@ const ProductCards = () => {
             size="md"
             currentSort={currentSort}
             onChange={(e) => {
-              setCurrentSort(e.target.value);
+              setCurrentSort(e.target.value as SortOptionValue);
             }}
             options={FILTER_OPTIONS}
           />

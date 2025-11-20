@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import BasketIcon from "@/assets/basket.svg?react";
-import { useShoppingCart } from "@/features/cart/context/CartContext";
-
-// import { FiZap } from "react-icons/fi";
+import { CONTACT_PAGE_URL, HOME_PAGE_URL } from "@/config/constants";
+import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 
 const link = ({ isActive }: { isActive: boolean }) =>
   `px-3 py-2 rounded ${isActive ? "bg-black text-white" : "hover:bg-gray-200"}`;
@@ -12,14 +11,18 @@ export default function Header() {
 
   return (
     <header className="flex justify-between items-center bg-white/90 backdrop-blur shadow mb-4 p-4 sticky top-0 z-20">
-      <NavLink to="/" className="font-logo text-gray-800 text-3xl" end>
+      <NavLink
+        to={HOME_PAGE_URL}
+        className="font-logo text-gray-800 text-3xl"
+        end
+      >
         Zeebra
       </NavLink>
       <nav className="flex gap-4 items-center">
-        <NavLink to="/" className={link} end>
+        <NavLink to={HOME_PAGE_URL} className={link} end>
           Home
         </NavLink>
-        <NavLink to="/contact" className={link}>
+        <NavLink to={CONTACT_PAGE_URL} className={link}>
           Contact
         </NavLink>
         <button

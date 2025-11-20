@@ -2,8 +2,8 @@ import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Footer from "@/features/layout/components/Footer";
 import Header from "@/features/layout/components/Header";
-import Cart from "./components/Cart";
-import { ShoppingCartProvider } from "./features/cart/context/CartContext";
+import Cart from "./features/shoppingCart/components/Cart";
+import { ShoppingCartProvider } from "./features/shoppingCart/context/CartContext";
 
 export default function App() {
   return (
@@ -17,10 +17,10 @@ export default function App() {
         <main className="flex-1">
           <Outlet />
         </main>
-        <ToastContainer position="top-right" autoClose={2000} />
 
         <Footer />
       </div>
+      <ToastContainer position="top-right" autoClose={2000} />
     </ShoppingCartProvider>
   );
 }

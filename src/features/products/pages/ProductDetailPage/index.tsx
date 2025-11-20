@@ -1,8 +1,8 @@
 import { useId, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useShoppingCart } from "@/features/cart/context/CartContext";
 import { renderPrice } from "@/features/products/components/ProductPrice";
 import renderTags from "@/features/products/components/ProductTags";
+import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 import type { ProductType } from "@/types/products.types";
 import Button from "../../../../components/ui/Button";
 import percentageCalc from "../../components/DiscountBadge";

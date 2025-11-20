@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
-import { useShoppingCart } from "@/features/cart/context/CartContext";
+import { CHECKOUT_PAGE_URL } from "@/config/constants";
+import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 
 const Cart = () => {
   const {
@@ -10,6 +11,7 @@ const Cart = () => {
     closeCart,
     totalItems,
     isOpen,
+    getTotalPrice,
   } = useShoppingCart();
 
   if (!isOpen) return null;
@@ -105,17 +107,14 @@ const Cart = () => {
         <div className="mt-4 flex flex-col items-start  ">
           <h3 className="text-xl font-heading mt-4">
             Total: $
-            {cartItems
-              .reduce((total, item) => total + item.price * item.quantity, 0)
-              .toFixed(2)}
+            {getTotalPrice()}
           </h3>
           {cartItems.length > 0 && (
             <button
               type="button"
               className=" bg-black text-white rounded hover:bg-gray-800 w-full h-[3rem] cursor-pointer"
               onClick={() => {
-                // Implement checkout functionality here
-                toast.success("Proceeding to checkout!");
+                window.location.href = CHECKOUT_PAGE_URL;
               }}
             >
               Checkout
