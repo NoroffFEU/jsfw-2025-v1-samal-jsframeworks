@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Footer from "@/features/layout/components/Footer";
 import Header from "@/features/layout/components/Header";
 import Cart from "./components/Cart";
@@ -16,6 +17,8 @@ export default function App() {
         <main className="flex-1">
           <Outlet />
         </main>
+        <ToastContainer position="top-right" autoClose={2000} />
+
         <Footer />
       </div>
     </ShoppingCartProvider>

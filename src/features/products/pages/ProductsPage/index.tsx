@@ -1,30 +1,29 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import Filter from "@/components/ui/Filter";
+import { toast } from "react-toastify";
 import CardsSkeleton from "@/components/loadingSkeleton/CardsSkeleton";
+import ProductCard from "@/components/ProductCards";
+import Filter from "@/components/ui/Filter";
 import SearchBar from "@/components/ui/SearchBar";
-import Button from "@/components/ui/Button";
 import { useShoppingCart } from "@/features/cart/context/CartContext";
 import { fetchProducts } from "@/features/products/api/fetchProducts";
-import percentageCalc from "@/features/products/components/DiscountBadge";
-import { renderPrice } from "@/features/products/components/ProductPrice";
-import renderTags from "@/features/products/components/ProductTags";
 import { filterProducts } from "@/features/products/utils/filterProducts";
 import type { ProductType } from "@/types/products.types";
+import { getVisibleProducts } from "@/utils/getVisibleProducts";
+
+const FILTER_OPTIONS = [
+  { label: "Name: A-Z", value: "a-z" },
+  { label: "Name: Z-A", value: "z-a" },
+  { label: "Price: Low to High", value: "price-asc" },
+  { label: "Price: High to Low", value: "price-desc" },
+];
+
+type SortOptionValue = (typeof FILTER_OPTIONS)[number]["value"] | "";
 
 const ProductCards = () => {
-  const filterOptions = [
-    { label: "Name: A-Z", value: "a-z" },
-    { label: "Name: Z-A", value: "z-a" },
-    { label: "Price: Low to High", value: "price-asc" },
-    { label: "Price: High to Low", value: "price-desc" },
-  ];
-
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(true);
   const { increaseQuantity } = useShoppingCart();
-  const [currentSort, setCurrentSort] = useState("");
+  const [currentSort, setCurrentSort] = useState<SortOptionValue>("");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -34,25 +33,10 @@ const ProductCards = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const visibleProducts = useMemo(() => {
-    let list = [...products];
-
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      list = list.filter(
-        (p) =>
-          p.title.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q) ||
-          p.tags.some((tag) => tag.toLowerCase().includes(q))
-      );
-    }
-
-    if (currentSort) {
-      list = filterProducts(list, currentSort);
-    }
-
-    return list;
-  }, [products, searchQuery, currentSort]);
+  const visibleProducts = useMemo(
+    () => getVisibleProducts(products, searchQuery, currentSort),
+    [products, searchQuery, currentSort]
+  );
 
   if (loading) {
     return <CardsSkeleton />;
@@ -68,7 +52,7 @@ const ProductCards = () => {
             onChange={(e) => {
               setCurrentSort(e.target.value);
             }}
-            options={filterOptions}
+            options={FILTER_OPTIONS}
           />
         </div>
         <div className="w-full flex justify-end">
@@ -76,65 +60,33 @@ const ProductCards = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {visibleProducts.length === 0 ? (
+        {visibleProducts.length === 0 && (
           <p className="text-center col-span-full text-lg mt-4">
-            No products found.
+            No products found
+            {searchQuery && (
+              <>
+                {" "}
+                for <span className="font-semibold">"{searchQuery}"</span>
+              </>
+            )}
+            .
           </p>
-        ) : (
-          visibleProducts.map((product) => (
-            <div
-              key={product.id}
-              className="card bg-gray-100! p-3! flex flex-col cursor-pointer items-start justify-between hover:bg-white! hover:shadow-xl hover:transform hover:scale-101 duration-300"
-            >
-              <Link className="w-full" to={`/product/id=${product.id}`}>
-                <div className="mb-2 flex flex-col gap-2">
-                  <div className="relative">
-                    <img
-                      className="w-full h-76 bg-center object-cover"
-                      src={product.image.url}
-                      alt={product.image.alt}
-                    />
-                    <div className="absolute top-2 right-2">
-                      {percentageCalc({
-                        size: "sm",
-                        originalPrice: product.price,
-                        discountedPrice: product.discountedPrice,
-                      })}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-lg">
-                      {product.rating} <span className="text-xl">★</span>
-                    </p>
-                  </div>
-                  <div className="mt-2 flex flex-col gap-1">
-                    <h2 className="text-xl font-heading">{product.title}</h2>
-                    <p className="line-clamp-1">{product.description}</p>
-                    <h3 className="font-heading">Tags:</h3>
-                    <div className="flex gap-2">{renderTags(product.tags)}</div>
-                  </div>
-
-                  {renderPrice({ product })}
-                </div>
-              </Link>
-              <Button
-                label="ADD TO CART"
-                size="md"
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.stopPropagation();
-                  increaseQuantity(
-                    product.id,
-                    product.title,
-                    product.price,
-                    product.image.url
-                  );
-                  toast.success("Added to cart!");
-                }}
-              />
-            </div>
-          ))
         )}
-        <ToastContainer position="top-right" autoClose={2000} />
+        {visibleProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onAddToCart={() => {
+              increaseQuantity(
+                product.id,
+                product.title,
+                product.price,
+                product.image.url
+              );
+              toast.success("Added to cart!");
+            }}
+          />
+        ))}
       </div>
     </>
   );
