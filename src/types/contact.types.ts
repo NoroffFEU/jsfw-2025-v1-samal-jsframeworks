@@ -1,18 +1,8 @@
-export interface ContactFormData {
-	fullName: string;
-	subject: string;
-	email: string;
-	message: string;
-}
+export type ContactFormValues = {
+  name: string;
+  subject: string;
+  email: string;
+  message: string;
+};
 
-export interface FormErrors {
-	fullName?: string;
-	subject?: string;
-	email?: string;
-	message?: string;
-}
-
-export interface ContactFormProps {
-	onSubmit: (data: ContactFormData) => void;
-	onValidationError: (errors: FormErrors) => void;
-}
+export type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;

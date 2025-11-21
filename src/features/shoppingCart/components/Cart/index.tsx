@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { CHECKOUT_PAGE_URL } from "@/config/constants";
 import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 
 const Cart = () => {
+  const navigate = useNavigate();
+
   const {
     cartItems,
     removeFromCart,
@@ -106,15 +109,15 @@ const Cart = () => {
         )}
         <div className="mt-4 flex flex-col items-start  ">
           <h3 className="text-xl font-heading mt-4">
-            Total: $
-            {getTotalPrice()}
+            Total: ${getTotalPrice()}
           </h3>
           {cartItems.length > 0 && (
             <button
               type="button"
-              className=" bg-black text-white rounded hover:bg-gray-800 w-full h-[3rem] cursor-pointer"
+              className=" bg-black text-white hover:bg-gray-800 w-full h-[3rem] flex items-center justify-center cursor-pointer"
               onClick={() => {
-                window.location.href = CHECKOUT_PAGE_URL;
+                closeCart();
+                navigate(CHECKOUT_PAGE_URL);
               }}
             >
               Checkout

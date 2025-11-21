@@ -1,9 +1,8 @@
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 const Success = () => {
   useEffect(() => {
-    console.log("Checkout success page loaded");
     toast.success(
       "Thank you for your purchase! Your order has been successfully placed."
     );

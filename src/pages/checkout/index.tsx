@@ -1,8 +1,9 @@
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import { CHECKOUT_SUCCESS_PAGE_URL } from "@/config/constants";
 import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 
 export const Checkout = () => {
+  const navigate = useNavigate();
   const {
     cartItems,
     getTotalPrice,
@@ -174,12 +175,12 @@ export const Checkout = () => {
               <div className="w-full flex justify-end">
                 <button
                   type="button"
-                  onClick={() => {
-                    // removeAllFromCart();
-                    window.location.href = CHECKOUT_SUCCESS_PAGE_URL;
-
+                  className="bg-black text-white hover:bg-gray-800 w-full h-[3rem] flex items-center justify-center cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    removeAllFromCart();
+                    navigate(CHECKOUT_SUCCESS_PAGE_URL);
                   }}
-                  className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 w-full cursor-pointer"
                 >
                   Place Order
                 </button>
