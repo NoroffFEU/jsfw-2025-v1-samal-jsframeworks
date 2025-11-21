@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { CHECKOUT_SUCCESS_PAGE_URL } from "@/config/constants";
 import { useShoppingCart } from "@/features/shoppingCart/context/CartContext";
 
@@ -27,6 +28,7 @@ export const Checkout = () => {
                     <label htmlFor="fullName">Full Name *</label>
                     <input
                       name="fullName"
+                      type="text"
                       placeholder="Full Name"
                       className="border border-gray-300 w-full mt-2 rounded-md p-2"
                     />
@@ -53,6 +55,7 @@ export const Checkout = () => {
                     <label htmlFor="address">Address *</label>
                     <input
                       name="address"
+                      type="text"
                       placeholder="Address"
                       className="border border-gray-300 w-full mt-2 rounded-md p-2"
                     />
@@ -61,6 +64,7 @@ export const Checkout = () => {
                     <label htmlFor="city">City *</label>
                     <input
                       name="city"
+                      type="text"
                       placeholder="City"
                       className="border border-gray-300 w-full mt-2 rounded-md p-2"
                     />
@@ -173,6 +177,7 @@ export const Checkout = () => {
                   onClick={() => {
                     // removeAllFromCart();
                     window.location.href = CHECKOUT_SUCCESS_PAGE_URL;
+
                   }}
                   className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 w-full cursor-pointer"
                 >
