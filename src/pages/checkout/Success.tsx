@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 
 const Success = () => {
   useEffect(() => {
+    console.log("Checkout success page loaded");
     toast.success(
       "Thank you for your purchase! Your order has been successfully placed."
     );
   }, []);
+
   return (
     <div className="container mx-auto p-4 h-full bg-white">
       <h1 className="text-3xl font-bold mb-4">Checkout Success</h1>
