@@ -7,6 +7,11 @@ export function getVisibleProducts(
 	searchQuery: string,
 	currentSort: string,
 ) {
+	if (!Array.isArray(products)) {
+		console.error("Invalid products array provided to getVisibleProducts");
+		return [];
+	}
+
 	let list = [...products];
 
 	if (searchQuery.trim()) {

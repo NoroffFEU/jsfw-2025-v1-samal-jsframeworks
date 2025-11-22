@@ -12,10 +12,13 @@ const isDiscounted = (product: ProductType) => {
 
 /** Render product price with optional discount display */
 export const renderPrice = ({ product, quantity }: totalPriceProps) => {
-  const totalPrice = quantity ? product.price * quantity : product.price;
-  const totalDiscountedPrice = quantity
-    ? product.discountedPrice * quantity
-    : product.discountedPrice;
+  if (!product || typeof product.price !== "number") {
+    return <p className="text-lg font-bold">Price unavailable</p>;
+  }
+
+  const safeQuantity = quantity && quantity > 0 ? quantity : 1;
+  const totalPrice = product.price * safeQuantity;
+  const totalDiscountedPrice = product.discountedPrice * safeQuantity;
 
   return (
     <div className="flex items-center gap-2">

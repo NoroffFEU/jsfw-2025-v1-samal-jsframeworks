@@ -49,7 +49,14 @@ const SingleProduct = ({ product }: SingleProductProps) => {
                   className="border border-gray-300 w-[5rem]  rounded-md p-2"
                   value={productQuantity}
                   onChange={(e) => {
-                    setProductQuantity(Number(e.target.value));
+                    const value = Number(e.target.value);
+                    if (value >= 1 && value <= 10) {
+                      setProductQuantity(value);
+                    } else if (value < 1) {
+                      setProductQuantity(1);
+                    } else {
+                      setProductQuantity(10);
+                    }
                   }}
                 />
               </div>

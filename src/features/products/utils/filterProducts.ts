@@ -2,6 +2,11 @@ import type { ProductType } from "@/types/products.types";
 
 /** Sort products based on the selected filter option (alphabetical or price) */
 export const filterProducts = (criteria: ProductType[], options: string) => {
+	if (!Array.isArray(criteria)) {
+		console.error("Invalid criteria array provided to filterProducts");
+		return [];
+	}
+
 	switch (options) {
 		case "a-z":
 			return criteria.sort((a, b) => a.title.localeCompare(b.title));

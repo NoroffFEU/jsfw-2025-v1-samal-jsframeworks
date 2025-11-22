@@ -43,6 +43,11 @@ export const ShoppingCartProvider = ({
     imageUrl: string,
     quantity?: number
   ) => {
+    if (!id || !title || price < 0) {
+      console.error("Invalid product data provided to increaseQuantity");
+      return;
+    }
+
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
         return [
@@ -69,6 +74,11 @@ export const ShoppingCartProvider = ({
 
   /** Decrease item quantity by 1, remove from cart if quantity reaches 0 */
   const decreaseQuantity = (id: string) => {
+    if (!id) {
+      console.error("Invalid product ID provided to decreaseQuantity");
+      return;
+    }
+
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id)?.quantity === 1) {
         return currItems.filter((item) => item.id !== id);
@@ -86,6 +96,11 @@ export const ShoppingCartProvider = ({
 
   /** Remove an item completely from the cart regardless of quantity */
   const removeFromCart = (id: string) => {
+    if (!id) {
+      console.error("Invalid product ID provided to removeFromCart");
+      return;
+    }
+
     setCartItems((currItems) => {
       return currItems.filter((item) => item.id !== id);
     });
@@ -95,9 +110,17 @@ export const ShoppingCartProvider = ({
 
   /** Calculate the total price of all items in the cart */
   const getTotalPrice = () => {
-    return cartItems
-      .reduce((total, item) => total + item.price * item.quantity, 0)
-      .toFixed(2);
+    try {
+      return cartItems
+        .reduce((total, item) => {
+          const itemTotal = (item.price || 0) * (item.quantity || 0);
+          return total + itemTotal;
+        }, 0)
+        .toFixed(2);
+    } catch (error) {
+      console.error("Error calculating total price:", error);
+      return "0.00";
+    }
   };
 
   /** Clear all items from the cart */
