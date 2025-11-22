@@ -1,7 +1,3 @@
-export type CartBarProps = {
-	isOpen: boolean;
-};
-
 export interface CartItem {
 	id: string;
 	quantity: number;
@@ -30,11 +26,4 @@ export interface CartContextType {
 	isOpen: boolean;
 	toggleCart: () => void;
 	getTotalPrice: () => string;
-}
-
-export interface CartItemProps {
-	item: CartItem;
-	onIncrease: () => void;
-	onDecrease: () => void;
-	onRemove: () => void;
 }

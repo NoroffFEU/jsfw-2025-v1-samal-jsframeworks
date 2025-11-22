@@ -20,8 +20,3 @@ export interface ReviewType {
 	rating: number;
 	description: string;
 }
-
-export interface ProductResponseType {
-	data: ProductType;
-	meta: Record<string, unknown>;
-}
