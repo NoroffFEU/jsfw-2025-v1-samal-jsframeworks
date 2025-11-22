@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+/** Custom hook to persist state in localStorage with automatic synchronization */
 export function useLocalStorage<T>(
 	key: string,
 	initialValue: T,

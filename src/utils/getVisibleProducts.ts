@@ -1,6 +1,7 @@
 import { filterProducts } from "@/features/products/utils/filterProducts";
 import type { ProductType } from "@/types/products.types";
 
+/** Filter and sort products based on search query and sort option */
 export function getVisibleProducts(
 	products: ProductType[],
 	searchQuery: string,

@@ -1,6 +1,7 @@
 import { API_BASE, PRODUCTS_ENDPOINT } from "@/config/constants";
 import type { ProductType } from "@/types/products.types";
 
+/** Fetch all products from the API */
 export async function fetchProducts(): Promise<ProductType[]> {
 	const res = await fetch(`${API_BASE}${PRODUCTS_ENDPOINT}`, {
 		method: "GET",

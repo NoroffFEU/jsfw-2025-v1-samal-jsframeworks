@@ -1,5 +1,6 @@
 import type { ProductType } from "@/types/products.types";
 
+/** Sort products based on the selected filter option (alphabetical or price) */
 export const filterProducts = (criteria: ProductType[], options: string) => {
 	switch (options) {
 		case "a-z":

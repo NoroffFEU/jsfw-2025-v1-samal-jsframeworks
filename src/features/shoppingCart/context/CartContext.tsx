@@ -3,118 +3,126 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import type { CartContextType, CartItem } from "@/types/cart.types";
 
 const ShoppingCartContext = createContext<CartContextType | undefined>(
-	undefined,
+  undefined
 );
 
+/** Hook to access shopping cart context and functionality */
 export const useShoppingCart = () => {
-	const context = useContext(ShoppingCartContext);
-	if (!context) {
-		throw new Error(
-			"useShoppingCart must be used within a ShoppingCartProvider",
-		);
-	}
-	return context;
+  const context = useContext(ShoppingCartContext);
+  if (!context) {
+    throw new Error(
+      "useShoppingCart must be used within a ShoppingCartProvider"
+    );
+  }
+  return context;
 };
 
 export const ShoppingCartProvider = ({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) => {
-	const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("cart", []);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("cart", []);
 
-	const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-	const openCart = () => setIsOpen(true);
-	const closeCart = () => setIsOpen(false);
-	const toggleCart = () => setIsOpen((prev) => !prev);
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
+  const toggleCart = () => setIsOpen((prev) => !prev);
 
-	const getItemQuantity = (id: string) => {
-		return cartItems.find((item) => item.id === id)?.quantity || 0;
-	};
+  /** Get the quantity of a specific item in the cart */
+  const getItemQuantity = (id: string) => {
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  };
 
-	const increaseQuantity = (
-		id: string,
-		title: string,
-		price: number,
-		imageUrl: string,
-		quantity?: number,
-	) => {
-		setCartItems((currItems) => {
-			if (currItems.find((item) => item.id === id) == null) {
-				return [
-					...currItems,
-					{
-						id,
-						title: title || "",
-						price: price || 0,
-						imageUrl: imageUrl || "",
-						quantity: quantity || 1,
-					},
-				];
-			} else {
-				return currItems.map((item) => {
-					if (item.id === id) {
-						return { ...item, quantity: item.quantity + 1 };
-					} else {
-						return item;
-					}
-				});
-			}
-		});
-	};
+  /** Add a new item to cart or increase quantity by 1 if it already exists */
+  const increaseQuantity = (
+    id: string,
+    title: string,
+    price: number,
+    imageUrl: string,
+    quantity?: number
+  ) => {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id) == null) {
+        return [
+          ...currItems,
+          {
+            id,
+            title: title || "",
+            price: price || 0,
+            imageUrl: imageUrl || "",
+            quantity: quantity || 1,
+          },
+        ];
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
 
-	const decreaseQuantity = (id: string) => {
-		setCartItems((currItems) => {
-			if (currItems.find((item) => item.id === id)?.quantity === 1) {
-				return currItems.filter((item) => item.id !== id);
-			} else {
-				return currItems.map((item) => {
-					if (item.id === id) {
-						return { ...item, quantity: item.quantity - 1 };
-					} else {
-						return item;
-					}
-				});
-			}
-		});
-	};
-	const removeFromCart = (id: string) => {
-		setCartItems((currItems) => {
-			return currItems.filter((item) => item.id !== id);
-		});
-	};
+  /** Decrease item quantity by 1, remove from cart if quantity reaches 0 */
+  const decreaseQuantity = (id: string) => {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
 
-	const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  /** Remove an item completely from the cart regardless of quantity */
+  const removeFromCart = (id: string) => {
+    setCartItems((currItems) => {
+      return currItems.filter((item) => item.id !== id);
+    });
+  };
 
-	const getTotalPrice = () => {
-		return cartItems
-			.reduce((total, item) => total + item.price * item.quantity, 0)
-			.toFixed(2);
-	};
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-	const removeAllFromCart = () => {
-		setCartItems([]);
-	};
+  /** Calculate the total price of all items in the cart */
+  const getTotalPrice = () => {
+    return cartItems
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
+  };
 
-	return (
-		<ShoppingCartContext.Provider
-			value={{
-				cartItems,
-				getItemQuantity,
-				increaseQuantity,
-				decreaseQuantity,
-				removeFromCart,
-				removeAllFromCart,
-				totalItems,
-				openCart,
-				closeCart,
-				isOpen,
-				toggleCart,
-				getTotalPrice,
-			}}
-		>
-			{children}
-		</ShoppingCartContext.Provider>
-	);
+  /** Clear all items from the cart */
+  const removeAllFromCart = () => {
+    setCartItems([]);
+  };
+
+  return (
+    <ShoppingCartContext.Provider
+      value={{
+        cartItems,
+        getItemQuantity,
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+        removeAllFromCart,
+        totalItems,
+        openCart,
+        closeCart,
+        isOpen,
+        toggleCart,
+        getTotalPrice,
+      }}
+    >
+      {children}
+    </ShoppingCartContext.Provider>
+  );
 };

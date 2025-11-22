@@ -5,6 +5,7 @@ import type {
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** Validate contact form fields and return error messages for invalid inputs */
 export const validateContactForm = (
 	values: ContactFormValues,
 ): ContactFormErrors => {
