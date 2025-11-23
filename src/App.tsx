@@ -9,10 +9,10 @@ import { ShoppingCartProvider } from "./features/shoppingCart/context/CartContex
 export default function App() {
   return (
     <ShoppingCartProvider>
-      <div className={`fixed top-0 right-0 flex justify-end z-50`}>
+      <div className={`fixed top-0 right-0 z-50 flex justify-end`}>
         <Cart />
       </div>
-      <div className="flex flex-col min-h-dvh m-auto container relative">
+      <div className="relative flex flex-col m-auto min-h-dvh container">
         <Header />
 
         <main className="flex-1">

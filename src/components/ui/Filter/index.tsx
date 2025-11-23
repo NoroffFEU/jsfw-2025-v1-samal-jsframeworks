@@ -32,13 +32,13 @@ const Filter = ({
 
   return (
     <div className={`flex w-fit items-center gap-2`}>
-      <label htmlFor="filter" className="text-lg font-heading">
+      <label htmlFor="filter" className="font-heading text-lg">
         Sort by:
       </label>
       <select
         name="filter"
         id={useId()}
-        className={`bg-white w-fit font-button cursor-pointer ${sizeClasses}`}
+        className={`w-fit cursor-pointer bg-white font-button ${sizeClasses}`}
         value={currentSort}
         onChange={onChange}
       >

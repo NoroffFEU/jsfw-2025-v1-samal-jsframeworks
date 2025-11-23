@@ -1,14 +1,14 @@
 const Hero = () => {
-	return (
-		<div className="card h-96 bg-pattern cursor-default">
-			<div className="flex items-center justify-center h-full card ">
-				<div className="flex flex-col lg:items-center 2xs:items-start">
-					<h1 className="hero-text">Elegance, delivered.</h1>
-					<h1 className="hero-text">Style, redefined.</h1>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="bg-pattern h-96 cursor-default card">
+      <div className="flex justify-center items-center h-full card">
+        <div className="flex flex-col items-start 2xs:items-start lg:items-center">
+          <h1 className="hero-text">Elegance, delivered.</h1>
+          <h1 className="hero-text">Style, redefined.</h1>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Hero;

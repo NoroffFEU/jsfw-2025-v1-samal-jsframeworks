@@ -1,23 +1,23 @@
 const SingleProductSkeleton = () => {
   return (
-    <div className="card container bg-blue-200 px-32 h-full">
-      <div className="p-4 animate-pulse m-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8">
+    <div className="bg-blue-200 px-32 h-full card container">
+      <div className="gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr] m-auto p-4 animate-pulse">
         <div className="flex-shrink-0">
-          <div className="max-h-[45rem] md:min-h-[45rem] m-auto object-cover animate-pulse bg-gray-300 rounded"></div>
+          <div className="bg-gray-300 m-auto rounded md:min-h-[45rem] max-h-[45rem] object-cover animate-pulse"></div>
         </div>
 
-        <div className="flex-1 flex flex-col gap-4">
-          <div className="w-3/4 h-8 bg-gray-300 rounded"></div>
+        <div className="flex flex-col flex-1 gap-4">
+          <div className="bg-gray-300 rounded w-3/4 h-8"></div>
 
           <div className="space-y-2">
-            <div className="w-full h-4 bg-gray-300 rounded"></div>
-            <div className="w-full h-4 bg-gray-300 rounded"></div>
-            <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
+            <div className="bg-gray-300 rounded w-full h-4"></div>
+            <div className="bg-gray-300 rounded w-full h-4"></div>
+            <div className="bg-gray-300 rounded w-2/3 h-4"></div>
           </div>
 
-          <div className="w-24 h-6 bg-gray-300 rounded"></div>
+          <div className="bg-gray-300 rounded w-24 h-6"></div>
 
-          <div className="w-32 h-4 bg-gray-300 rounded"></div>
+          <div className="bg-gray-300 rounded w-32 h-4"></div>
         </div>
       </div>
     </div>

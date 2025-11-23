@@ -1,9 +1,9 @@
 const Footer = () => {
-	return (
-		<footer className="py-4 text-center text-gray-600 bg-white/90 backdrop-blur shadow mt-4">
-			&copy; {new Date().getFullYear()} Zeebra. All rights reserved.
-		</footer>
-	);
+  return (
+    <footer className="bg-white/90 shadow backdrop-blur mt-4 py-4 text-gray-600 text-center">
+      &copy; {new Date().getFullYear()} Zeebra. All rights reserved.
+    </footer>
+  );
 };
 
 export default Footer;

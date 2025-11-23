@@ -36,12 +36,12 @@ const ViewSingleProduct = () => {
 
   if (error) {
     return (
-      <div className="container text-center py-8">
+      <div className="py-8 text-center container">
         <p className="text-red-600 text-lg">{error}</p>
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="mt-4 bg-black text-white px-4 py-2 hover:bg-gray-800"
+          className="bg-black hover:bg-gray-800 mt-4 px-4 py-2 text-white"
         >
           Try Again
         </button>
@@ -51,14 +51,14 @@ const ViewSingleProduct = () => {
 
   if (!productData) {
     return (
-      <div className="container text-center py-8">
+      <div className="py-8 text-center container">
         <p className="text-lg">Product not found</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col h-full justify-center items-center gap-4">
+    <div className="flex flex-col justify-center items-center gap-4 h-full">
       <SingleProduct product={productData} />
       <Reviews product={productData} />
     </div>

@@ -9,16 +9,16 @@ const Success = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4 h-full bg-white">
-      <h1 className="text-3xl font-bold mb-4">Checkout Success</h1>
-      <div className="w-full min-h-70 bg-green-300 flex flex-col justify-center items-center">
-        <p className="text-xl font-bold">
+    <div className="bg-white mx-auto p-4 h-full container">
+      <h1 className="mb-4 font-bold text-3xl">Checkout Success</h1>
+      <div className="flex flex-col justify-center items-center bg-green-300 p-8 w-full min-h-[24rem]">
+        <p className="font-bold text-xl">
           Thank you for your purchase! Your order has been successfully placed.
         </p>
       </div>
       <div>
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <h4 className="text-lg font-semibold mb-3">Order Summary</h4>
+        <div className="bg-gray-50 mt-6 p-4 rounded-lg">
+          <h4 className="mb-3 font-semibold text-lg">Order Summary</h4>
           <div className="space-y-2">
             <p>
               <span className="font-medium">Order Number:</span> #ORD-

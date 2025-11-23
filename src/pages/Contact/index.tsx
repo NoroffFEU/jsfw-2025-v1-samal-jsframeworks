@@ -43,8 +43,8 @@ export const Contact = () => {
   };
 
   return (
-    <div className="container mx-auto py-18 h-full bg-white">
-      <div className="max-w-md mx-auto">
+    <div className="bg-white mx-auto py-18 h-full container">
+      <div className="mx-auto max-w-md">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
             <label htmlFor="name">Full Name</label>
@@ -54,10 +54,10 @@ export const Contact = () => {
               placeholder="Your name"
               value={values.name}
               onChange={handleChange}
-              className="border border-gray-300 w-full mt-2 rounded-md p-2"
+              className="mt-2 p-2 border border-gray-300 rounded-md w-full"
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              <p className="mt-1 text-red-500 text-sm">{errors.name}</p>
             )}
           </div>
 
@@ -69,10 +69,10 @@ export const Contact = () => {
               placeholder="Order problem…"
               value={values.subject}
               onChange={handleChange}
-              className="border border-gray-300 w-full mt-2 rounded-md p-2"
+              className="mt-2 p-2 border border-gray-300 rounded-md w-full"
             />
             {errors.subject && (
-              <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+              <p className="mt-1 text-red-500 text-sm">{errors.subject}</p>
             )}
           </div>
 
@@ -84,10 +84,10 @@ export const Contact = () => {
               placeholder="roberto@example.com"
               value={values.email}
               onChange={handleChange}
-              className="border border-gray-300 w-full mt-2 rounded-md p-2"
+              className="mt-2 p-2 border border-gray-300 rounded-md w-full"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              <p className="mt-1 text-red-500 text-sm">{errors.email}</p>
             )}
           </div>
 
@@ -99,15 +99,15 @@ export const Contact = () => {
               placeholder="helo, why no coming product...?"
               value={values.message}
               onChange={handleChange}
-              className="border border-gray-300 w-full mt-2 rounded-md p-2 max-h-35"
+              className="mt-2 p-2 border border-gray-300 rounded-md w-full max-h-35"
             />
             {errors.message && (
-              <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              <p className="mt-1 text-red-500 text-sm">{errors.message}</p>
             )}
           </div>
 
           <button
-            className="bg-black text-white py-2 px-4 w-full hover:bg-gray-800 cursor-pointer "
+            className="bg-black hover:bg-gray-800 px-4 py-2 w-full text-white cursor-pointer"
             type="submit"
           >
             Submit

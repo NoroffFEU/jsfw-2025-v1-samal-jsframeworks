@@ -18,11 +18,11 @@ const Button = ({
   return (
     <div
       data-button
-      className="bg-pattern w-full flex justify-center p-1 hover:shadow-lg hover:transition-transform hover:scale-101 duration-300"
+      className="flex justify-center bg-pattern hover:shadow-lg p-1 w-full hover:scale-101 hover:transition-transform duration-300"
     >
       <button
         type="button"
-        className={`bg-white w-full font-button cursor-pointer ${sizeClasses}`}
+        className={`w-full cursor-pointer bg-white font-button ${sizeClasses}`}
         onClick={onClick}
       >
         {label}

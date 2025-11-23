@@ -18,7 +18,7 @@ const PercentageCalc = ({
   if (percentage <= 0) return null;
   return (
     <p
-      className={`text-white font-heading font-bold  py-1 w-fit px-2 bg-black ${preset}`}
+      className={`w-fit bg-black px-2 py-1 font-heading font-bold text-white ${preset}`}
     >
       {percentage}%
     </p>

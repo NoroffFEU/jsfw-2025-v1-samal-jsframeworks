@@ -47,8 +47,8 @@ const ProductCards = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center md:flex-row 2xs:flex-col gap-4 bg-white p-2">
-        <div className="w-full flex md:justify-start 2xs:justify-center">
+      <div className="flex md:flex-row flex-col 2xs:flex-col justify-between items-center gap-4 bg-white p-2">
+        <div className="flex justify-center 2xs:justify-center md:justify-start w-full">
           <Filter
             size="md"
             currentSort={currentSort}
@@ -58,13 +58,13 @@ const ProductCards = () => {
             options={FILTER_OPTIONS}
           />
         </div>
-        <div className="w-full flex justify-end">
+        <div className="flex justify-end w-full">
           <SearchBar onSearch={(value) => setSearchQuery(value)} />
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {visibleProducts.length === 0 && (
-          <p className="text-center col-span-full text-lg mt-4">
+          <p className="col-span-full mt-4 text-lg text-center">
             No products found
             {searchQuery && (
               <>

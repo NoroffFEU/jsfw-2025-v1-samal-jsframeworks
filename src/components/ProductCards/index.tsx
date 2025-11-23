@@ -13,16 +13,16 @@ type ProductCardProps = {
 /** Render individual product card with image, details, and add to cart button */
 const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
   return (
-    <div className="card bg-gray-100! p-3! flex flex-col cursor-pointer items-start justify-between hover:bg-white! hover:shadow-xl hover:transform hover:scale-101 duration-300">
+    <div className="flex flex-col justify-between items-start bg-gray-100! hover:bg-white! hover:shadow-xl p-3! hover:scale-101 duration-300 cursor-pointer card hover:transform">
       <Link className="w-full" to={`/product/id=${product.id}`}>
-        <div className="mb-2 flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mb-2">
           <div className="relative">
             <img
-              className="w-full h-76 bg-center object-cover"
+              className="bg-center w-full h-76 object-cover"
               src={product.image.url}
               alt={product.image.alt}
             />
-            <div className="absolute top-2 right-2">
+            <div className="top-2 right-2 absolute">
               {percentageCalc({
                 size: "sm",
                 originalPrice: product.price,
@@ -37,8 +37,8 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
             </p>
           </div>
 
-          <div className="mt-2 flex flex-col gap-1">
-            <h2 className="text-xl font-heading">{product.title}</h2>
+          <div className="flex flex-col gap-1 mt-2">
+            <h2 className="font-heading text-xl">{product.title}</h2>
             <p className="line-clamp-1">{product.description}</p>
             <h3 className="font-heading">Tags:</h3>
             <div className="flex gap-2">{renderTags(product.tags)}</div>

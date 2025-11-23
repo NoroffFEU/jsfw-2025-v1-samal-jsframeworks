@@ -11,7 +11,7 @@ export default function Header() {
   const { totalItems, openCart, closeCart, isOpen } = useShoppingCart();
 
   return (
-    <header className="flex justify-between items-center bg-white/90 backdrop-blur shadow mb-4 p-4 sticky top-0 z-20">
+    <header className="top-0 z-20 sticky flex justify-between items-center bg-white/90 shadow backdrop-blur mb-4 p-4">
       <NavLink
         to={HOME_PAGE_URL}
         className="font-logo text-gray-800 text-3xl"
@@ -19,7 +19,7 @@ export default function Header() {
       >
         Zeebra
       </NavLink>
-      <nav className="flex gap-4 items-center">
+      <nav className="flex items-center gap-4">
         <NavLink to={HOME_PAGE_URL} className={link} end>
           Home
         </NavLink>
@@ -29,13 +29,13 @@ export default function Header() {
         <button
           type="button"
           aria-label="Open basket"
-          className="p-1 rounded hover:bg-gray-100 relative"
+          className="relative hover:bg-gray-100 p-1 rounded"
           onClick={() => {
             isOpen ? closeCart() : openCart();
           }}
         >
           <BasketIcon className="w-6 h-6 cursor-pointer" />
-          <div className="bg-black text-white rounded-full absolute -top-1 -right-1 px-1 text-sm font-semibold">
+          <div className="-top-1 -right-1 absolute bg-black px-1 rounded-full font-semibold text-white text-sm">
             {totalItems}
           </div>
         </button>

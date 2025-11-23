@@ -10,11 +10,11 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
         type="text"
         placeholder="Search..."
         onChange={(e) => onSearch(e.target.value)}
-        className="w-full pl-4 pr-4 py-2 border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-colors duration-200"
+        className="py-2 pr-4 pl-4 border border-gray-300 focus:border-transparent outline-none focus:ring-2 focus:ring-black w-full transition-colors duration-200"
       />
       <button
         type="button"
-        className="bg-black text-white px-3 py-1 cursor-pointer hover:bg-gray-900"
+        className="bg-black hover:bg-gray-900 px-3 py-1 text-white cursor-pointer"
       >
         Search
       </button>

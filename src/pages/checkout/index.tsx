@@ -19,10 +19,10 @@ export const Checkout = () => {
       {cartItems.length === 0 ? (
         <p>Your cart is empty. Please add items to proceed to checkout.</p>
       ) : (
-        <div className="card container h-full bg-blue-50 pb-10!">
-          <h1 className="text-3xl font-heading mb-6">Checkout</h1>
-          <div className="m-auto grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8">
-            <div className="flex flex-col gap-2 w-full ">
+        <div className="bg-blue-50 pb-10! h-full card container">
+          <h1 className="mb-6 font-heading text-3xl">Checkout</h1>
+          <div className="gap-8 grid grid-cols-1 md:grid-cols-[1fr_1fr] m-auto">
+            <div className="flex flex-col gap-2 w-full">
               <h2 className="mb-2 font-bold">Shipping information</h2>
               <div>
                 <form className="flex flex-col gap-4">
@@ -32,7 +32,7 @@ export const Checkout = () => {
                       name="fullName"
                       type="text"
                       placeholder="Full Name"
-                      className="border border-gray-300 w-full mt-2 rounded-md p-2"
+                      className="mt-2 p-2 border border-gray-300 rounded-md w-full"
                     />
                   </div>
                   <div>
@@ -41,7 +41,7 @@ export const Checkout = () => {
                       name="email"
                       type="email"
                       placeholder="Email address"
-                      className="border border-gray-300 w-full mt-2 rounded-md p-2"
+                      className="mt-2 p-2 border border-gray-300 rounded-md w-full"
                     />
                   </div>
                   <div>
@@ -50,7 +50,7 @@ export const Checkout = () => {
                       name="phone"
                       type="tel"
                       placeholder="Phone Number"
-                      className="border border-gray-300 w-full mt-2 rounded-md p-2"
+                      className="mt-2 p-2 border border-gray-300 rounded-md w-full"
                     />
                   </div>
                   <div>
@@ -59,7 +59,7 @@ export const Checkout = () => {
                       name="address"
                       type="text"
                       placeholder="Address"
-                      className="border border-gray-300 w-full mt-2 rounded-md p-2"
+                      className="mt-2 p-2 border border-gray-300 rounded-md w-full"
                     />
                   </div>
                   <div>
@@ -68,7 +68,7 @@ export const Checkout = () => {
                       name="city"
                       type="text"
                       placeholder="City"
-                      className="border border-gray-300 w-full mt-2 rounded-md p-2"
+                      className="mt-2 p-2 border border-gray-300 rounded-md w-full"
                     />
                   </div>
                   <div>
@@ -80,7 +80,7 @@ export const Checkout = () => {
                 </form>
               </div>
             </div>
-            <div className="flex flex-col container gap-8 ">
+            <div className="flex flex-col gap-8 container">
               <h2 className="mb-2 font-bold">Review your cart</h2>
               <div
                 className={`flex flex-col gap-2 max-h-68 overflow-y-auto ${
@@ -90,8 +90,8 @@ export const Checkout = () => {
                 }`}
               >
                 {cartItems.map((item) => (
-                  <div className="flex border-b border-gray-300" key={item.id}>
-                    <div className="p-2 flex gap-2 flex-row w-full">
+                  <div className="flex border-gray-300 border-b" key={item.id}>
+                    <div className="flex flex-row gap-2 p-2 w-full">
                       <div>
                         <img
                           className="w-28 h-28 object-cover"
@@ -107,10 +107,10 @@ export const Checkout = () => {
                         <p>
                           Price: <span>${item.price}</span>
                         </p>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex items-center gap-2">
                           <button
                             type="button"
-                            className="py-1 px-3 text-black hover:bg-gray-100 active:bg-gray-200 cursor-pointer"
+                            className="hover:bg-gray-100 active:bg-gray-200 px-3 py-1 text-black cursor-pointer"
                             onClick={() => {
                               decreaseQuantity(item.id);
                             }}
@@ -120,7 +120,7 @@ export const Checkout = () => {
                           <span>{item.quantity}</span>
                           <button
                             type="button"
-                            className=" py-1 px-3 text-black hover:bg-gray-100 active:bg-gray-200 cursor-pointer"
+                            className="hover:bg-gray-100 active:bg-gray-200 px-3 py-1 text-black cursor-pointer"
                             onClick={() =>
                               increaseQuantity(
                                 item.id,
@@ -169,14 +169,14 @@ export const Checkout = () => {
                   Electricity ${(parseFloat(getTotalPrice()) * 0.05).toFixed(2)}
                 </span>
 
-                <span className="font-bold text-lg mt-3">
+                <span className="mt-3 font-bold text-lg">
                   Total: ${getTotalPrice()}
                 </span>
               </div>
-              <div className="w-full flex justify-end">
+              <div className="flex justify-end w-full">
                 <button
                   type="button"
-                  className="bg-black text-white hover:bg-gray-800 w-full h-[3rem] flex items-center justify-center cursor-pointer"
+                  className="flex justify-center items-center bg-black hover:bg-gray-800 w-full h-[3rem] text-white cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
                     removeAllFromCart();
