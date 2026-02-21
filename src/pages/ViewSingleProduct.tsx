@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import SingleProductSkeleton from "@/components/loadingSkeleton/SingleProductSkeleton";
 import { fetchSingleProduct } from "@/features/products/api/fetchSingleProduct";
 import Reviews from "@/features/products/components/Reviews/Reviews";
@@ -6,63 +7,63 @@ import SingleProduct from "@/features/products/pages/ProductDetailPage";
 import type { ProductType } from "@/types/products.types";
 
 const ViewSingleProduct = () => {
-  const id = window.location.href.split("=")[1];
+	const { id } = useParams<{ id: string }>();
 
-  const [productData, setProduct] = useState<ProductType | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+	const [productData, setProduct] = useState<ProductType | null>(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!id) {
-      setError("Invalid product ID");
-      setLoading(false);
-      return;
-    }
+	useEffect(() => {
+		if (!id) {
+			setError("Invalid product ID");
+			setLoading(false);
+			return;
+		}
 
-    setLoading(true);
-    setError(null);
-    fetchSingleProduct(id)
-      .then(setProduct)
-      .catch((err) => {
-        console.error("Failed to fetch product:", err);
-        setError("Failed to load product. Please try again.");
-      })
-      .finally(() => setLoading(false));
-  }, [id]);
+		setLoading(true);
+		setError(null);
+		fetchSingleProduct(id)
+			.then(setProduct)
+			.catch((err) => {
+				console.error("Failed to fetch product:", err);
+				setError("Failed to load product. Please try again.");
+			})
+			.finally(() => setLoading(false));
+	}, [id]);
 
-  if (loading) {
-    return <SingleProductSkeleton />;
-  }
+	if (loading) {
+		return <SingleProductSkeleton />;
+	}
 
-  if (error) {
-    return (
-      <div className="py-8 text-center container">
-        <p className="text-red-600 text-lg">{error}</p>
-        <button
-          type="button"
-          onClick={() => window.location.reload()}
-          className="bg-black hover:bg-gray-800 mt-4 px-4 py-2 text-white"
-        >
-          Try Again
-        </button>
-      </div>
-    );
-  }
+	if (error) {
+		return (
+			<div className="py-8 text-center container">
+				<p className="text-red-600 text-lg">{error}</p>
+				<button
+					type="button"
+					onClick={() => window.location.reload()}
+					className="bg-black hover:bg-gray-800 mt-4 px-4 py-2 text-white"
+				>
+					Try Again
+				</button>
+			</div>
+		);
+	}
 
-  if (!productData) {
-    return (
-      <div className="py-8 text-center container">
-        <p className="text-lg">Product not found</p>
-      </div>
-    );
-  }
+	if (!productData) {
+		return (
+			<div className="py-8 text-center container">
+				<p className="text-lg">Product not found</p>
+			</div>
+		);
+	}
 
-  return (
-    <div className="flex flex-col justify-center items-center gap-4 h-full">
-      <SingleProduct product={productData} />
-      <Reviews product={productData} />
-    </div>
-  );
+	return (
+		<div className="flex flex-col justify-center items-center gap-4 h-full">
+			<SingleProduct product={productData} />
+			<Reviews product={productData} />
+		</div>
+	);
 };
 
 export default ViewSingleProduct;

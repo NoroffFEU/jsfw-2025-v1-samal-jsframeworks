@@ -7,15 +7,17 @@ export const filterProducts = (criteria: ProductType[], options: string) => {
 		return [];
 	}
 
+	const sortedCriteria = [...criteria];
+
 	switch (options) {
 		case "a-z":
-			return criteria.sort((a, b) => a.title.localeCompare(b.title));
+			return sortedCriteria.sort((a, b) => a.title.localeCompare(b.title));
 		case "z-a":
-			return criteria.sort((a, b) => b.title.localeCompare(a.title));
+			return sortedCriteria.sort((a, b) => b.title.localeCompare(a.title));
 		case "price-asc":
-			return criteria.sort((a, b) => a.price - b.price);
+			return sortedCriteria.sort((a, b) => a.price - b.price);
 		case "price-desc":
-			return criteria.sort((a, b) => b.price - a.price);
+			return sortedCriteria.sort((a, b) => b.price - a.price);
 		default:
 			return criteria;
 	}
